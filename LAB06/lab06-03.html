@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <style>
+     /* *{
+            border: 1px dashed rgb(110, 109, 109);
+        } */
+        #form {
+            width: 100%;
+            margin: 0 auto;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: right;
+        }
+        input {
+            width: 200px;
+            height: 18px;
+            margin: 3px 0;
+        }
+        input[type="submit"] {
+            width: 100px;
+            height: 30px;
+        }
+        span {
+            color: red;
+        }
+        .errName,
+        .errEmail,
+        .errPhone,
+        .errPassword,
+        .errConfirmPassword {
+            color: red;
+        }
+    </style>
+</head>
+ <body>
+    <!-- Form Validation with JavaScript -->
+    <h1>Form Validation with JavaScript</h1>
+    <form action="" method="post" id="form">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Enter your name" />
+        <span id="errName"></span>
+        <br />
+        <label for="email">Email</label>
+        <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+        />
+        <span id="errEmail"></span>
+        <br />
+        <label for="phone">Phone</label>
+        <input
+            type="text"
+            name="phone"
+            id="phone"
+            placeholder="Enter your phone"
+        />
+        <span id="errPhone"></span>
+        <br />
+        <label for="password">Password</label>
+        <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Enter your password"
+        />
+        <span id="errPassword"></span>
+        <br />
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            placeholder="Enter your confirm password"
+        />
+        <span id="errConfirmPassword"></span>
+        <br />
+        <label for=""></label>
+        <input type="submit" value="Submit" />
+    </from>
+    <script>
+        formElm = document.getElementById("form");
+        formElm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            nameElm = document.getElementById("name");
+            emailElm = document.getElementById("email");
+            phoneElm = document.getElementById("phone");
+            passwordElm = document.getElementById("password");
+            confirmPasswordElm = document.getElementById("confirmPassword");
+            if (nameElm.value ==""){
+                document.getElementById("errName").innerHTML = "กรุณากรอกชื่อ";
+                nameElm.focus();
+                return false;
+            } else {
+                document.getElementById("errName").innerHTML = "";
+            }
+            if (emailElm.value ==""){
+                document.getElementById("errEmail").innerHTML = "กรุณากรอกอีเมล";
+                emailElm.focus();
+                return false;
+            } else {
+                document.getElementById("errEmail").innerHTML = "";
+            }
+            if (phoneElm.value ==""){
+                document.getElementById("errPhone").innerHTML = "กรุณากรอกเบอร์โทร";
+                phoneElm.focus();
+                return false;
+            } else {
+                document.getElementById("errPhone").innerHTML = "";
+            }
+            if (passwordElm.value ==""){
+                document.getElementById("errPassword").innerHTML = 
+                "กรุณากรอกรหัสผ่าน";
+                passwordElm.focus();
+                return false;
+            } else {
+                document.getElementById("errPassword").innerHTML = "";
+            }
+            if (confirmPasswordElm.value ==""){
+                document.getElementById("errConfirmPassword").innerHTML = 
+                "กรุณากรอกยืนยันรหัสผ่าน";
+                confirmPasswordElm.focus();
+                return false;
+            } else {
+                document.getElementById("errConfirmPassword").innerHTML = "";
+            }
+            if (passwordElm.value != confirmPasswordElm.value){
+                document.getElementById("errConfirmPassword").innerHTML = 
+                "กรุณากรอกรหัสผ่านให้ตรงกัน";
+                confirmPasswordElm.focus();
+                return false;
+            } else {
+                document.getElementById("errConfirmPassword").innerHTML = "";
+
+            }
+
+            alert("สมัครสมาชิกเรียบร้อยแล้ว");
+            return true;
+        });
+    </script>
+ </body>
+</html>

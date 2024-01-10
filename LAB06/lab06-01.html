@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript DOM</title>
+</head>
+<body>
+    <!-- DOM Demo -->
+
+    <!-- Change Text -->
+    <h1 id="heading">Hello World</h1>
+    <button id="btn2">Click Me</button>
+    <script>
+        buttonElement = document.getElementById("btn2");
+        buttonElement.addEventListener("click",function(){
+            headingElement = document.getElementById("heading");
+            headingElement.innerHTML = "Hello JavaScript";
+        });
+    </script>
+    <hr  />
+
+    <!-- Change URL -->
+    <input type="text" name="url" id="url" placeholder="Enter Url" />
+    <button id="btn">Click Me</button>
+    <script>
+        buttonElement = document.getElementById("btn");
+        buttonElement.addEventListener("click",function(){
+            urlElement  = document.getElementById("url");
+            console.log(urlElement.value);
+            window.location = urlElement.value;
+        });
+    </script>
+    <hr />
+
+    <!-- Change Image -->
+    <img
+        id = "image"
+        src="http://cdn-icons-png.flaticon.com/128/2618/2618576.png?ga=GA1.1.73037333.1704207092"
+        alt="Image"
+    />
+    <button id="btn3">Click Me</button>
+    <script>
+        buttonElement = document.getElementById("btn3");
+        buttonElement.addEventListener("click", function () {
+            imageElement = document.getElementById("image");
+            imageElement.src =
+            "https://cdn-icons-png.flaticon.com/128/10162/10162741.png?ga=GA1.1.73037333.1704207092"; 
+        });
+    </script>
+    <hr />
+
+    <!-- Change CSS -->
+    <h1 id="heading2">Hello World</h1>
+    <button id="btn4">Click Me</button>
+    <script>
+        buttonElement = document.getElementById("btn4");
+        buttonElement.addEventListener("click", function () {
+            headingElement = document.getElementById("heading2");
+            headingElement.style.color = "red";
+            headingElement.style.backgroundColor = "black";
+            headingElement.style.fontSize = "50px";
+        });
+    </script>
+    <hr />
+
+    <!-- Change Class -->
+    <style>
+        .heading {
+            color: rgb(47, 0, 255);
+            background-color: rgb(196, 199, 23);
+            font-size: 50px;
+        }
+    </style>
+    <h1 id="heading3">Hello World</h1>
+    <button id="btn5">Click Me</button>
+    <script>
+        buttonElement = document.getElementById("btn5");
+        buttonElement.addEventListener("click", function (){
+            headingElement  = document.getElementById("heading3");
+            headingElement.className = "heading";
+        });
+    </script>
+    <hr />
+
+    <!-- Change innerHTML -->
+    <h1 id="heading4">Hello World</h1>
+    <button id="btn6">Click Me</button>
+    <script>
+        buttonElement = document.getElementById("btn6");
+        buttonElement.addEventListener("click", function () {
+            headingElement = document.getElementById("btn6");
+            if (headingElement.innerHTML == "Hello World") {
+                headingElement.innerHTML = "Hello JavaScript";
+            } else {
+                headingElement.innerHTML = "Hello World";
+            }
+        });
+    </script>
+    <hr />
+</body>
+</html>

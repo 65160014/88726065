@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <h1>เกมส์ทายตัวเลข</h1>
+    <p>ทายตัวเลขระหว่าง 1 ถึง 100</p>
+    <input  type="text" id="guessField" placeholder="Guess a number" />
+    <input type="button" id="guessBtn" value="Submit guess" />
+    <input type="button" id="btnRestart" value="Restart" />
+    <div id="result"></div>
+    <div id="summary"></div>
+    <script>
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let numGuess = 0;
+
+        submitElm = document.querySelector("#guessBtn");
+        submitElm.addEventListener("click", function () {
+            guessFieldElm = document.getElementById("guessField");
+            guessField = guessFieldElm.value;
+            // check guessField is number
+            if (isNaN(guessField) || guessField == "") {
+                document.getElementById("result").innerHTML = "กรุณากรอกตัวเลข" ;
+                guessFieldElm.select();
+            } else {
+                if (guessField > randomNumber) {
+                    document.getElementById("result").innerHTML = "มากไป" ;
+                }else if (guessField < randomNumber) {
+                    document.getElementById("result").innerHTML = "น้อยไป" ;
+                }else{
+                    document.getElementById("result").innerHTML = "ถูกต้อง" ;
+                }
+                guessFieldElm.select();
+            }
+
+            //Restart new game
+            restartElm = document.querySelector("#btnRestart");
+            restartElm.addEventListener("click", function () {
+                location.reload();
+            });
+
+            // count number of guess
+            numGuess++;
+            document.getElementById("summary").innerHTML =
+            "ทายไปแล้ว" + numGuess + "ครั้ง";
+        });
+    </script>
+</body>
+</html>
