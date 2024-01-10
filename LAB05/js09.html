@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function gotoURL(url) {
+            window.location.href = url;
+        }
+    </script>
+    <h2>Pulldown menu with URL</h2>
+    <center>
+        <from>
+            <select name="menu" onchange="gotoURL(this.value);">
+                <option value=""></option>
+                <option value="https://www.buu.ac.th">Burapha University</option>
+                <option value="https://www.google.com">Google</option>
+                <option value="https://www.facebook.com">Facebook</option>
+                <option value="https://www.youtube.com">Youtube</option>
+            </select>
+        </from>
+    </center>
+</body>
+</html>

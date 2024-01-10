@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function highlight(me){
+            me.style.backgroundColor = "yellow";
+        }
+        function unHighlight(me){
+            me.style.backgroundColor = "white";
+        }
+    </script>
+    <input type="text" onfocus="highlight(this)" onblur="unHighlight(this)" />
+    <br />
+    <input type="text" onfocus="highlight(this)" onblur="unHighlight(this)" />
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>job application</title>
+    </head>
+    <body>
+        <h2>ใบสมัครงาน</h2>
+
+        <form action="process-order.php" method="post">
+            <table>
+                <tr>
+                    <td><label for="firstname">ชื่อ *</label></td>
+                    <td><label for="lastname">นามสกุล *</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="firstname" name="firstname" required /></td>
+                    <td><input type="text" id="lastname" name="lastname" required /></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><label for="email">อีเมล *</label></td>
+                </tr>
+                <tr>
+                    <td><input type="email" name="email" id="email" style="width: 360px;" required /></td>
+                </tr>
+
+                <tr>
+                    <td><label for="email">เว็บไซต์ผลงาน *</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="website" name="website" style="width: 360px;" placeholder="http://"></td>
+                </tr>
+                
+                <tr>
+                    <td><label for="position">ตำแหน่งที่ต้องการสมัคร *</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="position" name="position" style="width: 360px;" required /></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><label for="salary">เงินเดือนที่ต้องการ</label></td>
+                    <td><label for="start">จะเริ่มงานได้เมื่อไหร่</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="salary" name="salary"></td>
+                    <td><input type="text" id="start" name="start"></td>
+                </tr>
+                <tr>
+                    <td><label for="mobilePhone">โทรศัพท์มือถือ *</label></td>
+                    <td><label for="homePhone">โทรศัพท์บ้าน </label></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><input type="text" id="mobilePhone" name="mobilePhone" required /></td>
+                    <td><input type="text" id="homePhone" name="homePhone"></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><label for="relocation">คุณสะดวกที่จะย้ายที่อยู่หรือไม่</label></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="radio" id="yes" name="relocation" value="yes" required />
+                        <label for="relocation">สะดวก</label>
+                        <input type="radio" id="no" name="relocation" value="no" required />
+                        <label for="relocation">ไม่สะดวก</label>
+                        <input type="radio" id="notsure" name="relocation" value="notsure" required />
+                        <label for="relocation">ไม่แน่ใจ</label>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><label for="jobdesc">ลักษณะงานที่ทำงานล่าสุด</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="jobdesc" name="jobdesc" style="width: 360px;" required /></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><label for="question">คำถาม</label></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><textarea nmae="question" id="question" cols="49" rows="6"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center">
+                        <button type="submit">ส่งใบสมัคร</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

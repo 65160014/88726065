@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function windowHeight() {
+            // let w = window.innerWidth;
+            // document.wrtie("Window width: " + w + "<br />");
+            let h = window.innerHeight;
+            return h;
+        }
+
+        if (windowHeight() > 500) {
+            document.location = "https://www.google.com";
+        } else {
+            document.location = "https://www.facebook.com";
+        }
+    </script>
+</body>
+</html>

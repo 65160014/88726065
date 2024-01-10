@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function alertUser() {
+            alert("Hello World!");
+        }
+
+        function confirmUser() {
+            var result = confirm("Are you sure?");
+            if (result) {
+                alert("You clicked OK");
+            } else {
+                alert("You clicked Cancel");
+            }
+        }
+
+        function promptUser() {
+            var name = prompt("Please enter your name", "John Doe");
+            if (name != null) {
+                alert("Hello " + name + "! How are you today?");
+                document.write("Hello "+ name + "! How are you today?");
+            }
+        }
+    </script> 
+    <input type="button" value="Click for alert" onclick="alertUser()" />
+    <input type="button" value="Click for confirm" onclick="confirmUser()" />
+    <input type="button" value="Click for prompt" onclick="promptUser()" />
+</body>
+</html>
