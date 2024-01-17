@@ -5,18 +5,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // อาร์เรย์สำหรับเก็บรายการ Todo
     let todos = [];
+
     // เพิ่มรายการ Todo
     function addTodo() {
         const todoText = todoInput.value.trim();
         if (todoText !== "") {
             const todoItem = {
-            text: todoText,
-            completed: false,
-    };
-    todos.push(todoItem);
-    renderTodoList();
-    todoInput.value = "";
+                text: todoText,
+                completed: false,
+            };
+            todos.push(todoItem);
+            renderTodoList();
+            todoInput.value = "";
+        }
     }
+
+    // ลบรายการ Todo
+    function deleteTodo(index) {
+        todos.splice(index, 1);
+        renderTodoList();
     }
 
 
@@ -28,18 +35,22 @@ document.addEventListener("DOMContentLoaded", function () {
             const todoItem = todos[i];
             const listItem = document.createElement("li");
             listItem.textContent = todoItem.text;
+
             if (todoItem.completed) {
                 listItem.classList.add("completed");
             }
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "ลบ";
-        deleteButton.addEventListener("click", () => deleteTodo(i));
-        const completeButton = document.createElement("button");
-        completeButton.textContent = todoItem.completed ? "ยกเลิก" : "เสร็จ";
-        completeButton.addEventListener("click", () => toggleComplete(i));
-        listItem.appendChild(completeButton);
-        listItem.appendChild(deleteButton);
-        todoList.appendChild(listItem);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "ลบ";
+            deleteButton.addEventListener("click", () => deleteTodo(i));
+
+            const completeButton = document.createElement("button");
+            completeButton.textContent = todoItem.completed ? "ยกเลิกเสร็จ" : "เสร็จ";
+            completeButton.addEventListener("click", () => toggleComplete(i));
+
+            listItem.appendChild(completeButton);
+            listItem.appendChild(deleteButton);
+            todoList.appendChild(listItem);
         }
     }
 
@@ -53,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-
-    // แสดงรายการ Todo คร้ังแรก
+    // แสดงรายการ Todo ครั้งแรก
     renderTodoList();
 });
