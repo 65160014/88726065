@@ -9,10 +9,10 @@ body{
 h1 {
     color: #333;
     font-size: 24px;
-    background-color: #7cdaff;
+    background-color: #bbffb2;
     padding: 15px;
     border-radius: 5px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -49,7 +49,7 @@ input[type="text"] {
 }
 button {
     padding: 12px 24px;
-    background-color: #7cdaff;
+    background-color: #ffaced;
     color: white;
     border: none;
     border-radius: 8px;
@@ -58,5 +58,5 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #b3004b;
 }
