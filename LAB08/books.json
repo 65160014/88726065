@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Freakonomics: A Rogue Economist Explores the Hidden Side of Everything",
+        "price": "300-500 บาท",
+        "author1": "Steven D. Levitt",
+        "author2": "Stephen J. Dubner",
+        "author3": ""
+    },
+    {
+        "id": 2,
+        "name": "The Second Machine Age: Work, Progress, and Prosperity in a Time of Brilliant Technologies",
+        "price": "800-1,000 บาท",
+        "author1": "Erik Brynjolfsson",
+        "author2": "Andrew McAfee",
+        "author3": ""
+    },
+    {
+        "id": 3,
+        "name": "Nudge: Improving Decisions About Health, Wealth, and Happiness",
+        "price": "500-700 บาท",
+        "author1": "Richard H. Thaler",
+        "author2": "Cass R. Sunstein",
+        "author3": ""
+    },
+    {
+        "id": 4,
+        "name": "สุขภาพที่ดีด้วยสม10 ขั้นตอนสู่การควบคุมสุขภาพ",
+        "price": "300-400 บาท",
+        "author1": "ดร. รัชดา มุสิกะ",
+        "author2": "ดร. รัตน์ บุณยรัตน์",
+        "author3": ""
+    },
+    {
+        "id": 5,
+        "name": "บทเรียนจากชาติเสือพันธุ์ดาว: รู้ใจ รู้ธรรม",
+        "price": "350-450 บาท",
+        "author1": "นายอภิสิทธิ์ สง่าพันธุ์",
+        "author2": "นายพงศ์สวัสดิ์ รุ่งเรือง",
+        "author3": ""
+    },
+    {
+        "id": 6,
+        "name": "เส้นทางสู่ความเป็นเลิศ: 7 ประการในการเติบโตและสร้างทีมที่ทำงานได้",
+        "price": "400-500 บาท",
+        "author1": "นายภูมินทร์ วงศ์รัตน์",
+        "author2": "นายวุฒิชัย วงศ์อรุณโรจน์",
+        "author3": ""
+    }
+]

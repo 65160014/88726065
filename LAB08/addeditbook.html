@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .form-input input {
+      margin-bottom: 5px;
+    }
+    h3 {
+      background-color: rgb(119, 175, 74);
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 35px;
+      color: white;
+    }
+
+    .button {
+      display: flex;
+      justify-content: center;
+      height: 25px;
+    }
+  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book DB - Add/Edit</title>
+  </head>
+  <body>
+    <header><h3>Book DB : Add / Edit</h3></header>
+    <div class="container">
+      <div class="form-input">
+        <input type="hidden" id="id" />
+        <input type="text" id="book_name" placeholder="ชื่อหนังสือ" /> <br />
+        <input type="text" id="book_price" placeholder="ราคา" /> <br />
+        <input type="text" id="book_Author1" placeholder="ผู้แต่ง-1" /> <br />
+        <input type="text" id="book_Author2" placeholder="ผู้แต่ง-2" /> <br />
+        <input type="text" id="book_Author3" placeholder="ผู้แต่ง-3" /> <br />
+        <div class="button">
+          <button onclick="addeditBook()">Save</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      var books;
+      function findMaxBookId() {
+        var max = 0;
+        for (var i = 0; i < books.length; i++) {
+          if (books[i].id > max) {
+            max = books[i].id;
+          }
+        }
+        return max;
+      }
+      function addeditBook() {
+        addBook();
+        window.location.href = "search.html";
+      }
+      function addBook() {
+        var id = document.getElementById("id").value;
+        var name = document.getElementById("book_name").value;
+        var price = document.getElementById("book_price").value;
+        var author1 = document.getElementById("book_Author1").value;
+        var author2 = document.getElementById("book_Author2").value;
+        var author3 = document.getElementById("book_Author3").value;
+        if (id == "") {
+          id = findMaxBookId() + 1;
+          var book = {
+            id: id,
+            name: name,
+            price: price,
+            author1: author1,
+            author2: author2,
+            author3: author3,
+          };
+          books.push(book);
+        } else {
+          for (var i = 0; i < books.length; i++) {
+            if (books[i].id == id) {
+              books[i].name = name;
+              books[i].price = price;
+              books[i].author1 = author1;
+              books[i].author2 = author2;
+              books[i].author3 = author3;
+            }
+          }
+        }
+
+        localStorage.setItem("books", JSON.stringify(books));
+
+        document.getElementById("id").value = "";
+        document.getElementById("book_name").value = "";
+        document.getElementById("book_price").value = "";
+        document.getElementById("book_Author1").value = "";
+        document.getElementById("book_Author2").value = "";
+        document.getElementById("book_Author3").value = "";
+        document.getElementById("book_name").focus();
+      }
+
+      var books = JSON.parse(localStorage.getItem("books"));
+      if (books == null) {
+        books = [];
+      }
+
+      var urlParams = new URLSearchParams(window.location.search);
+      var id = urlParams.get("id");
+      if (id) {
+        var bookToEdit = books.find(function (book) {
+          return book.id == id;
+        });
+        if (bookToEdit) {
+          document.getElementById("id").value = bookToEdit.id;
+          document.getElementById("book_name").value = bookToEdit.name;
+          document.getElementById("book_price").value = bookToEdit.price;
+          document.getElementById("book_Author1").value = bookToEdit.author1;
+          document.getElementById("book_Author2").value = bookToEdit.author2;
+          document.getElementById("book_Author3").value = bookToEdit.author3;
+        }
+      }
+    </script>
+  </body>
+</html>

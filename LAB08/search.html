@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    h3 {
+      background-color: rgb(119, 175, 74);
+      text-align: center;
+      font-size: 35px;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      border: 3px solid #fff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #cff8fb;
+    }
+
+    tr:hover {
+      background-color: #48c2d7;
+    }
+
+    th {
+      background-color: #3c7eb3;
+      color: white;
+    }
+
+    .top-bar{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    button{
+        width: 60px;
+        height: 20px;
+    }
+  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book DB - JSON</title>
+  </head>
+  <body onload="loadBooks()">
+    <header><h3>Book DB</h3></header>
+    <div class="top-bar">
+        <div class="search">
+          ค้นหาหนังสือ :
+          <input type="text" id="search" onkeyup="searchBook()" />
+        </div>
+        <button onclick="addBook()">เพิ่ม</button>
+    </div>
+    <div id="result"></div>
+    <script>
+      var books;
+
+        function loadBooks() {
+        books = JSON.parse(localStorage.getItem("books"));
+        if (books == null) {
+            books = [];
+        }
+        searchBook();
+        }
+
+        function addBook() {
+        window.location.href = "addeditbook.html";
+        }
+
+        function searchBook() {
+        var search = document.getElementById("search").value;
+        var result = document.getElementById("result");
+        var html =
+            "<table border='1'><tr><th>ชื่อหนังสือ</th><th>ราคา</th><th>ผู้แต่ง</th><th></th></tr>";
+
+        for (var i = 0; i < books.length; i++) {
+            var str =
+            books[i].id + "|" + books[i].name + "|" + books[i].price;
+            
+            if (
+            str.toLowerCase().includes(search.toLowerCase()) ||
+            books[i].author1.toLowerCase().includes(search.toLowerCase()) ||
+            books[i].author2.toLowerCase().includes(search.toLowerCase()) ||
+            books[i].author3.toLowerCase().includes(search.toLowerCase())
+            ) {
+            html +=
+                "</td><td>" +
+                books[i].name +
+                "</td><td>" +
+                books[i].price +
+                "</td><td>" +
+                books[i].author1 +
+                " ,  " +
+                books[i].author2 +
+                " ,  " +
+                books[i].author3 +
+                "</td><td><img src='https://t.ly/mtMN' onclick='editBook(" +
+                books[i].id +
+                ")'> <img src='https://t.ly/523J' onclick='deleteBook(" +
+                books[i].id +
+                ")'></td></tr>";
+            }
+        }
+        html += "</table>";
+        result.innerHTML = "<hr>ผลการค้นหา<br>" + html;
+        }
+
+        function deleteBook(id) {
+        for (var i = 0; i < books.length; i++) {
+            if (books[i].id == id) {
+            books.splice(i, 1);
+            }
+        }
+        localStorage.setItem("books", JSON.stringify(books));
+        searchBook();
+        }
+
+        function editBook(id) {
+        window.location.href = "addeditbook.html?id=" + id;
+        }
+
+    </script>
+  </body>
+</html>
