@@ -1,0 +1,47 @@
+<h3>Upload a dog</h3>
+<input type="file" id="fileInput" />
+<input type="hidden" name="sub-id" id="sub-id" value="by-witty" />
+<button onclick="uploadImage()" >Upload</button>
+<div id="uploadResults"></div>
+<script>
+  const API_URL = "https://api.thedogapi.com/v1/";
+  const API_KEY =
+    "live_aGM3B6bA1ZXbWlx0lp1iXmAU83FT71VRde58vFXctZEY2na2JFud0A81pvvPpypM";
+
+  function uploadImage() {
+    const fileInput = document.getElementById("fileInput");
+    const file = fileInput.files[0];
+    const formData = new FormData();
+    formData.append("file", file);
+
+    setTimeout(function uploadImage() {
+      window.location.href = "index.html";
+    }, 3000);
+
+    fetch(`${API_URL}images/upload`, {
+      method: "POST",
+      headers: {
+        "x-api-key": API_KEY,
+      },
+      body: formData,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        document.getElementById(
+          "uploadResults"
+        ).innerHTML = `<img src="${data.url}" width="50%" />`;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  // id : IjWRvudOB
+  // id : cKU-hvnfl
+</script>
+
+
+
