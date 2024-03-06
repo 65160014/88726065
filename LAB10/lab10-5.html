@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style5.css">
+<title>Lab10-5: Switchable Grid</title>
+<script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="app" v-cloak>
+    <div class="bar">
+        <!-- ปุ่มสำหรับเปลี่ยนค่าตัวแปร layout ซึ่งมีผลต่อการแสดงผล UL -->
+        <a href="#" class="list-icon" v-bind:class="{ 'active': layout == 'list'}" @click.prevent="layout = 'list'"></a>
+        <a href="#" class="grid-icon" v-bind:class="{ 'active': layout == 'grid'}" @click.prevent="layout = 'grid'"></a>
+    </div>
+    <!-- กำหนด layout แบบ grid และ list โดยการแสดงผลขึ้นอยู่กับค่าของ "layout" ที่ถูกเชื่อมโยงกับปุ่ม -->
+    <ul v-if="layout == 'grid'" class="grid">
+        <!-- view ที่แสดง big photos และไม่มีข้อความ -->
+        <li v-for="article in articles" :key="article.url">
+            <a :href="article.url" target="_blank"><img :src="article.image.large" alt="Article Image"></a>
+        </li>
+    </ul>
+    <ul v-if="layout == 'list'" class="list">
+        <!-- view ที่แสดงรูปเล็กและข้อความ -->
+        <li v-for="article in articles" :key="article.url">
+            <a :href="article.url" target="_blank"><img :src="article.image.small" alt="Article Image"></a>
+            <p>{{ article.title }}</p>
+        </li>
+    </ul>
+</div>
+<script>
+const app = Vue.createApp({
+    data() {
+        return {
+            // กำหนด layout mode โดยค่าที่เป็นไปได้คือ "grid" หรือ "list".
+            layout: 'grid',
+            articles: [
+                {
+                    "title": "What You Need To Know About CSS Variables",
+                    "url": "http://tutorialzine.com/2016/03/what-you-need-to-know-about-css-variables/",
+                    "image": {
+                        "large": "css-variables.jpg",
+                        "small": "css-variables-150x150.jpg"
+                    }
+                },
+                {
+                    "title": "Freebie: 4 Great Looking Pricing Tables",
+                    "url": "http://tutorialzine.com/2016/02/freebie-4-great-looking-pricing-tables/",
+                    "image": {
+                        "large": "great-looking-pricing-tables.jpg",
+                        "small": "great-looking-pricing-tables-150x150.jpg"
+                    }
+                },
+                {
+                    "title": "20 Interesting JavaScript and CSS Libraries for February 2016",
+                    "url": "http://tutorialzine.com/2016/02/20-interesting-javascript-and-css-libraries-for-february-2016/",
+                    "image": {
+                        "large": "interesting-resources-february.jpg",
+                        "small": "interesting-resources-february-150x150.jpg"
+                    }
+                },
+                {
+                    "title": "Quick Tip: The Easiest Way To Make Responsive Headers",
+                    "url": "http://tutorialzine.com/2016/02/quick-tip-easiest-way-to-make-responsive-headers/",
+                    "image": {
+                        "large": "quick-tip-responsive-headers.png",
+                        "small": "quick-tip-responsive-headers-150x150.png"
+                    }
+                },
+                {
+                    "title": "Learn SQL In 20 Minutes",
+                    "url": "http://tutorialzine.com/2016/01/learn-sql-in-20-minutes/",
+                    "image": {
+                        "large": "learn-sql-20-minutes.png",
+                        "small": "learn-sql-20-minutes-150x150.png"
+                    }
+                },
+                {
+                    "title": "Creating Your First Desktop App With HTML, JS and Electron",
+                    "url": "http://tutorialzine.com/2015/12/creating-your-first-desktop-app-with-html-js-and-electron/",
+                    "image": {
+                        "large": "creating-your-first-desktop-app-with-electron.png",
+                        "small": "creating-your-first-desktop-app-with-electron-150x150.png"
+                    }
+                }
+            ]
+        };
+    }
+}).mount('#app');
+</script>
+</body>
+</html>

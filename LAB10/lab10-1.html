@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style1.css">
+    <title>Lab10-1: Navigation Menu</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- navigation menu จะได้รับค่าของตัวแปร "active" จาก data -->
+        <!-- หยุดการลิ้งไปยังเพจอื่น โดยใช้ "prevent" modifier (ย่อมาจาก preventDefault) -->
+        <nav v-bind:class="active" v-on:click.prevent>
+            <!-- เมื่อลิ้งถูกคลิก จะเรียกเมธอด makeActive -->
+            <a href="#" class="home" v-on:click="makeActive('home')">Home</a>
+            <a href="#" class="projects" v-on:click="makeActive('projects')">Projects</a>
+            <a href="#" class="services" v-on:click="makeActive('services')">Services</a>
+            <a href="#" class="contact" v-on:click="makeActive('contact')">Contact</a>
+        </nav>
+        <!-- {{ active }} จะถูกแทนค่าด้วยค่าของตัวแปร "active" โดยอัตโนมัติ -->
+        <p>You chose 
+            <b>{{ active }}</b>
+        </p>
+    </div>
+
+    <script>
+        // สร้าง Vue instance และส่ง object ที่จะกำหนดค่าต่าง ๆ.
+        const app = Vue.createApp({
+            // สร้างตัวแปร "active" ใน data object โดยกำหนดค่าเริ่มต้นเป็น "home"
+            data() {
+                return {
+                    active: 'home'
+                }
+            },
+            methods: {
+                // สร้าง method ที่จะเปลี่ยนค่าของตัวแปร "active"
+                makeActive: function (item) {
+                    // เมื่อค่าของ model เปลี่ยน ค่าใน view ก็จะถูกเปลี่ยนโดยอัตโนมัติ
+                    this.active = item;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

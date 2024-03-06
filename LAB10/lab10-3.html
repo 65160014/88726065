@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style3.css">
+    <title>Lab10-3: Order Form</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <form id="app" v-cloak>
+        <h1>Services</h1>
+        <ul>
+            <!-- วนลูปอะเรย์ services array เพื่อสร้าง li
+                กำหนดให้เมื่อคลิก li ถูกคลิ๊กให้เรียกเมธอด toggleActive พร้อมส่งวัตถุ service
+                และ set หรือ remove the "active" css class ตามค่า service.active -->
+            <li v-for="service in services"
+                v-on:click="toggleActive(service)"
+                v-bind:class="{ 'active': service.active }">
+                {{ service.name }}
+                <span>{{ service.price }}</span>
+            </li>
+        </ul>
+        <div class="total">
+            Total: <span>{{ total() }}</span>
+        </div>
+    </form>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    services: [
+                        { name: 'Web Development', price: 300, active: true },
+                        { name: 'Design', price: 400, active: false },
+                        { name: 'Integration', price: 250, active: false },
+                        { name: 'Training', price: 220, active: false }
+                    ]
+                }
+            },
+            methods: {
+                toggleActive(service) {
+                    service.active = !service.active;
+                },
+                total() {
+                    return this.services.reduce((total, service) => {
+                        return service.active ? total + service.price : total;
+                    }, 0);
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="style4.css">
+<title>Lab10-4: Instant Search</title>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<form id="app" v-cloak>
+    <div class="bar">
+        <!-- สร้างการเชือมระหว่างโมเดล searchString กับ text field -->
+        <input type="text" v-model="searchString" placeholder="Enter your search terms" />
+    </div>
+    <ul>
+        <!-- สร้าง li สำหรับทุกค่าใน computed filteredArticles array -->
+        <li v-for="article in filteredArticles">
+            <a v-bind:href="article.url"><img v-bind:src="article.image" alt="Article Thumbnail"></a>
+            <p>{{ article.title }}</p>
+        </li>
+    </ul>
+</form>
+<script>
+const app = Vue.createApp({
+    data() {
+        return {
+            searchString: "",
+            
+            articles: [
+                {
+                    "title": "What You Need To Know About CSS Variables",
+                    "url": "http://tutorialzine.com/2016/03/what-you-need-to-know-about-css-variables/",
+                    "image": "css-variables-100x100.jpg"
+                },
+                {
+                    "title": "Freebie: 4 Great Looking Pricing Tables",
+                    "url": "http://tutorialzine.com/2016/02/freebie-4-great-looking-pricing-tables/",
+                    "image": "great-looking-pricing-tables-100x100.jpg"
+                },
+                {
+                    "title": "20 Interesting JavaScript and CSS Libraries for February 2016",
+                    "url": "http://tutorialzine.com/2016/02/20-interesting-javascript-and-css-libraries-for-february-2016/",
+                    "image": "interesting-resources-february-100x100.jpg"
+                },
+                {
+                    "title": "Quick Tip: The Easiest Way To Make Responsive Headers",
+                    "url": "http://tutorialzine.com/2016/02/quick-tip-easiest-way-to-make-responsive-headers/",
+                    "image": "quick-tip-responsive-headers-100x100.png"
+                },
+                {
+                    "title": "Learn SQL In 20 Minutes",
+                    "url": "http://tutorialzine.com/2016/01/learn-sql-in-20-minutes/",
+                    "image": "learn-sql-20-minutes-100x100.png"
+                },
+                {
+                    "title": "Creating Your First Desktop App With HTML, JS and Electron",
+                    "url": "http://tutorialzine.com/2015/12/creating-your-first-desktop-app-with-html-js-and-electron/",
+                    "image": "creating-your-first-desktop-app-with-electron-100x100.png"
+                }
+            ]
+        }
+    },
+    computed: {
+        // property computed ใช้ส าหรับค้นหาตาม searchString ที่ได้พิมพ์
+        filteredArticles: function () {
+            var articles_array = this.articles,
+                searchString = this.searchString;
+            if (!searchString) {
+                return articles_array;
+            }
+
+            searchString = searchString.trim().toLowerCase();
+
+            articles_array = articles_array.filter(function (item) {
+                if (item.title.toLowerCase().indexOf(searchString) !== -1) {
+                    return item;
+                }
+            })
+
+            // คืนอะเรย์ของข้อมูลที่ถูกกรองแล้ว
+            return articles_array;;
+        }
+    }
+})
+        app.mount('#app')
+</script>
+</body>
+</html>

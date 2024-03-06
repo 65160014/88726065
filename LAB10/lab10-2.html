@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <title>Lab10-2: Inline Editor</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <!-- v-cloak ซ่อน any un-compiled data bindings จนกว่า Vue instance จะพร้อม -->
+    <!-- เมื่อ element ถูกคลิก ฟังก์ชั ่น hideTooltp() จะถูกเรียกให้ท างาน -->
+    <div id="app" v-cloak v-on:click="hideTooltip">
+        <!-- ส่วนนี้เป็นส่วนของ Tooltip
+        v-on:click.stop เป็นตัวจัดการเหตุการณ์ส าหรับการคลิ๊ก โดยก าหนดส่วนขยาย stop เพื่อให้หยุด event propagation
+        v-if เป็นการตรวจสอบว่าตัวแปร "showtooltip" มีค่าเป็นจริง tooltip ถึงจะถูกแสดงออกมา -->
+        <div class="tooltip" v-on:click.stop v-if="show_tooltip">
+            <!-- v-model เชื่อมเนื้อหาของ text field กับ โมเดล "text_content"
+            เมื่อมีการเปลี่ยนแปลง text field มันจะปรับปรุงค่าที่เปลี่ยนแปลงไปยังที่ถูกเชื่อมโยงกันโดยอัตโนมัติ -->
+            <input type="text" v-model="text_content" />
+        </div>
+        <!-- เมื่อ paragraph ถูกคลิ๊กมันจะเรียกเมธอด "toggleTooltip" และหยุด event propagation -->
+        <!-- {{text_content}} จะถูกแทนค่าด้วยค่าของ "text_content" โดยอัตโนมัติ -->
+        <p v-on:click.stop="toggleTooltip">{{text_content}}</p>
+    </div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    show_tooltip: false,
+                    text_content: 'แก้ไขข้อความ'
+                }
+            },
+            methods: {
+                hideTooltip() {
+                    // เมื่อ model ถูกเปลี่ยนค่า view จะถูกปรับปรุงโดยอัตโนมัติ.
+                    this.show_tooltip = false;
+                },
+                toggleTooltip() {
+                    this.show_tooltip = !this.show_tooltip;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
